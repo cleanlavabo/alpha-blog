@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the very first sample of Ruby on Rails v5. 
 
-Things you may want to cover:
+## Steps to deploy to heroku
+- Step 1: `heroku create`
+- Step 2: Remove `gem 'sqlite3'` in `Gemfile`
 
-* Ruby version
+```
+group :development, :test do
+  gem 'sqlite3'
+end
 
-* System dependencies
+group :production do
+  gem 'pg'
+end
+```
+- Step3: Apply gem change to `Gemfile` and `Gemfile.lock`
+`bundle install --without production`
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Step 4: Commit and push code to heroku master
+- Step 5: Run `heroku run rails db:migrate`
+- Step 6: `heroku open`
