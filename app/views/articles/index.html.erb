@@ -1,5 +1,9 @@
 <h1 align="center">Listing all the article</h1>
 
+<div align="center">
+  <%= will_paginate %>
+</div>
+
 <% @articles.each do |article| %>
     <div class="row">
       <div class="col-xs-8 col-xs-offset-2">
@@ -29,3 +33,7 @@
       </div>
     </div>
 <% end %>
+
+<div align="center">
+  <%= will_paginate %>
+</div>

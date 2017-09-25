@@ -1,5 +1,9 @@
 <h1 align="left">All users </h1>
 
+<div align="center">
+  <%= will_paginate %>
+</div>
+
 <% @users.each do |user| %>
     <h4> User name: <%= user.username %></h4>
     <h4> User email: <%= user.email %></h4>
@@ -12,3 +16,7 @@
     <% end %>
     </hr>
 <% end %>
+
+<div align="center">
+  <%= will_paginate %>
+</div>
