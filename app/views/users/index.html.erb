@@ -1,0 +1,14 @@
+<h1 align="left">All users </h1>
+
+<% @users.each do |user| %>
+    <h4> User name: <%= user.username %></h4>
+    <h4> User email: <%= user.email %></h4>
+    <h4> Article amount: <%= user.articles.size %></h4>
+
+    <% if user.articles.size > 0 %>
+        <%= link_to 'See all article', user_path(user) %>
+    <% else %>
+        </br>
+    <% end %>
+    </hr>
+<% end %>
