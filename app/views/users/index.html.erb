@@ -9,11 +9,7 @@
     <h4> User email: <%= user.email %></h4>
     <h4> Article amount: <%= user.articles.size %></h4>
 
-    <% if user.articles.size > 0 %>
-        <%= link_to 'See all article', user_path(user) %>
-    <% else %>
-        </br>
-    <% end %>
+    <%= link_to 'See all article', user_path(user) %>
     </hr>
 <% end %>
 

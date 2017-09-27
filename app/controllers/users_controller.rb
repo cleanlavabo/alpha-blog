@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :show, :update]
+  before_action :require_same_user, only: [:edit, :update]
+  before_action :require_admin, only: [:destroy]
 
   def new
     @user = User.new
@@ -35,6 +37,13 @@ class UsersController < ApplicationController
   def show
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:destroy] = 'This user has been destroyed'
+    redirect_to users_path
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :email, :password)
@@ -42,6 +51,21 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find params[:id]
+  end
+
+  def require_same_user
+    if current_user != @user
+      flash[:danger] = 'Only user who create article can edit or delete it'
+      redirect_to users_path
+    end
+  end
+
+  def require_admin
+    if !current_user.admin?
+      flash[:danger] = 'Only admin can delete user and all articles'
+      redirect_to users_path
+    end
+
   end
 
 end

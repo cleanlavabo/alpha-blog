@@ -7,6 +7,9 @@
 
 <%= link_to 'Edit this user', edit_user_path(@user), class: 'btn btn-xs btn-primary' %>
 
+<%= link_to('Delete this user', user_path(@user), method: :delete,
+            data: {confirm: "Are you sure to delete \"#{@user.username}\" ?"}, class: 'btn btn-xs btn-danger') if current_user.admin? %>
+
 <% @user.articles.each do |article| %>
     <div class="row">
       <div class="col-xs-8 col-xs-offset-2">
